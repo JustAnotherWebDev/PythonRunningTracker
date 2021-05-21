@@ -3,8 +3,9 @@ from alarm_admin import telegram_bot_sendtext
 import time
 import datetime
 
-run = True #hier auf true setzen, damit das Programm läuft!
+run = True  # hier auf true setzen, damit das Programm läuft!
 print('Monitor of BeachVolleyBall-Scanner was started...')
+<<<<<<< HEAD
 counter = 0
 while True == True:
   while run == True:
@@ -31,3 +32,27 @@ while True == True:
       run = False
   time.sleep(172.800)
   print('Program has awaken again after 48h at: ', datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+=======
+while run == True:
+    # time.sleep(60)
+    process_found = False
+    for pid in psutil.pids():
+        p = psutil.Process(pid)
+        try:
+            if p.cmdline()[1] == 'src/app.py':
+                process_found = True
+                print()
+        except IndexError:
+            pass  # Not every pid-Stream hast more than 1 Array-Element
+    if process_found == False:
+        telegram_bot_sendtext()
+        time.sleep(3600)
+        telegram_bot_sendtext()
+        time.sleep(7200)
+        telegram_bot_sendtext()
+        time.sleep(7200)
+        telegram_bot_sendtext()
+        time.sleep(7200)
+        telegram_bot_sendtext()
+        run = False
+>>>>>>> 8ede9b7cef9d13f1a20919e872e656d9f9623b77
